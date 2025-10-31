@@ -1,5 +1,5 @@
-import { Card, CardContent } from "../components/ui/card";
-import type { Stats } from "../Core/types";
+import { Card, CardContent } from "../../components/ui/card";
+import type { Stats } from "../../Core/types";
 import { motion } from "framer-motion";
 
 interface TrafficStatsProps {

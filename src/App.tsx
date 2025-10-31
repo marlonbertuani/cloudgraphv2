@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DashboardLayout from "@/components/layout/DashboardLayout";
 import Home from "@/pages/Home";
 import BandwidthSaver from "@/pages/BandwidthSaver";
-import TrafficAnalysis from "@/pages/TrafficAnalisis";
+import TrafficAnalysis from "@/components/TrafficAnalisis/TrafficAnalisis";
 import RequestMetricsPage from "@/pages/RequestMetricsPage";
 
 export default function App() {

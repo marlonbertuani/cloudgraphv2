@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import type { Stats, Host, Client } from "../Core/types";
-import { API_BASE_URL } from "../Core/config";
+import type { Stats, Host, Client } from "../../Core/types";
+import { API_BASE_URL } from "../../Core/config";
 
-import TrafficStats from "../components/TrafficStats";
-import HostsTable from "../components/HostsTable";
-import UpdateExpirationDialog from "../components/UpdateExpirationDialog";
+import TrafficStats from "./TrafficStats";
+import HostsTable from "./HostsTable";
+import UpdateExpirationDialog from "./UpdateExpirationDialog";
 
 interface TrafficAnalisisProps {
   clientName?: string | null;

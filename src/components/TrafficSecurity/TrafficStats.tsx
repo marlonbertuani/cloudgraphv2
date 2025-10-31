@@ -2,30 +2,35 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Card, CardContent } from "../../components/ui/card";
 import TrafficCards from "./TrafficCards";
-import TrafficChart from "./TrafficCards";
+import TrafficChart from "./TrafficChart";
+import MitigationDetails from "./MitigationDetails";
+import { API_BASE_URL } from "../../Core/config";
 
-interface TrafficData {
-  date: string;
-  requests: number;
-  threats: number;
-  bandwidth: number;
+interface EventData {
+  eventType: string;
+  ts: string; // ou Date
+  eventCount: number;
+  accountTag: string;
+  // Adicione aqui outras propriedades que possam existir, como as que você usava
+  requests?: number;
+  threats?: number;
+  bandwidth?: number;
 }
 
 interface TrafficStatsProps {
-  apiBaseUrl: string;
-  clientName: string;
+  clientName: string | null;
   selectedMonth: string;
 }
 
-const TrafficStats: React.FC<TrafficStatsProps> = ({ apiBaseUrl, clientName, selectedMonth }) => {
-  const [data, setData] = useState<TrafficData[]>([]);
+const TrafficStats: React.FC<TrafficStatsProps> = ({ clientName, selectedMonth }) => {
+  const [data, setData] = useState<EventData[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchTrafficData = async () => {
       setLoading(true);
       try {
-        const response = await axios.get(`${apiBaseUrl}/graph-traffic/${clientName}?month=${selectedMonth}`);
+        const response = await axios.get(`${API_BASE_URL}/graph-datasec/${clientName}?monthRef=${selectedMonth}`);
         setData(response.data);
       } catch (error) {
         console.error("Erro ao carregar dados de tráfego:", error);
@@ -35,7 +40,7 @@ const TrafficStats: React.FC<TrafficStatsProps> = ({ apiBaseUrl, clientName, sel
     };
 
     fetchTrafficData();
-  }, [apiBaseUrl, clientName, selectedMonth]);
+  }, [clientName, selectedMonth]);
 
   if (loading) {
     return (
@@ -51,6 +56,7 @@ const TrafficStats: React.FC<TrafficStatsProps> = ({ apiBaseUrl, clientName, sel
     <div className="space-y-4">
       <TrafficCards data={data} />
       <TrafficChart data={data} />
+      <MitigationDetails data={data} />
     </div>
   );
 };

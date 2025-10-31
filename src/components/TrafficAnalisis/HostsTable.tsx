@@ -32,12 +32,12 @@ const HostsTable: React.FC<HostsTableProps> = ({ hosts }) => {
           {hosts.length > 0 ? hosts.map((host, idx) => (
             <tr key={idx} className={`bg-white ${idx % 2 === 0 ? "bg-blue-100" : ""} hover:bg-blue-200 transition-colors cursor-pointer border-t last:border-b`}>
               <td className="px-4 py-2">{host.name}</td>
-              <td className="px-4 py-2 text-right">{host.total_requests}</td>
-              <td className="px-4 py-2 text-right">{host.cache_hit}</td>
-              <td className="px-4 py-2 text-right">{host.origin_fetch}</td>
-              <td className="px-4 py-2 text-right">{host.acceleration_percentage?.toFixed(2) || "-"}</td>
-              <td className="px-4 py-2 text-right">{host.latency_improvement?.toFixed(2) || "-"}</td>
-              <td className={`px-4 py-2 text-right ${isDateWithin45Days(host.vencimento) ? "text-red-600" : ""}`}>
+              <td className="px-4 py-2 text-center">{host.total_requests}</td>
+              <td className="px-4 py-2 text-center">{host.cache_hit}</td>
+              <td className="px-4 py-2 text-center">{host.origin_fetch}</td>
+              <td className="px-4 py-2 text-center">{host.acceleration_percentage?.toFixed(2) || "-"} %</td>
+              <td className="px-4 py-2 text-center">{host.latency_improvement?.toFixed(2) || "-"} %</td>
+              <td className={`px-4 py-2 text-center ${isDateWithin45Days(host.vencimento) ? "text-red-600" : ""}`}>
                 {host.vencimento === "0/0/0" ? "N/D" : host.vencimento}
               </td>
             </tr>

@@ -1,6 +1,6 @@
 import React from "react";
-import { Button } from "../components/ui/button";
-import { AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogFooter } from "../components/ui/alert-dialog";
+import { Button } from "../../components/ui/button";
+import { AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogFooter } from "../../components/ui/alert-dialog";
 
 interface UpdateExpirationDialogProps {
   open: boolean;
