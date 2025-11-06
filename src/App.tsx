@@ -1,19 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import DashboardLayout from "@/components/layout/DashboardLayout";
-import Home from "@/pages/Home";
-import BandwidthSaver from "@/pages/BandwidthSaver";
-import TrafficAnalysis from "@/components/TrafficAnalisis/TrafficAnalisis";
-import RequestMetricsPage from "@/pages/RequestMetricsPage";
+import Home from "./pages/DashboardMetrics";
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<DashboardLayout />}>
+        <Route>
           <Route index element={<Home />} />
-          <Route path="bandwidth" element={<BandwidthSaver />} />
-          <Route path="traffic" element={<TrafficAnalysis />} />
-          <Route path="requests" element={<RequestMetricsPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
